@@ -1,0 +1,32 @@
+# ============================================================
+# Aplikacja do Przetwarzania Obrazów
+# Autorzy: Magdalena Czyżewska 21227, Adrian Witów 21319
+# ============================================================
+
+# ── Podstawowe (wymagane) ──────────────────────────────────
+Pillow>=10.0.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# ── Głębkie uczenie (mocno zalecane) ──────────────────────
+# Wybierz odpowiednią wersję dla swojej platformy:
+# macOS (Apple Silicon M1/M2/M3):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+# macOS (Intel):
+#   pip install torch torchvision
+# Linux/Windows (GPU CUDA):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+torch>=2.0.0
+torchvision>=0.15.0
+
+# ── Detekcja szkieletu ─────────────────────────────────────
+mediapipe>=0.10.0
+
+# ── Detekcja emocji ───────────────────────────────────────
+deepface>=0.0.79
+tf-keras>=2.15.0   # wymagane przez DeepFace (TF backend)
+
+# ── Opcjonalne ────────────────────────────────────────────
+# YOLOv5 (zainstaluj osobno z torch hub lub oficjalnie):
+# pip install ultralytics  (YOLOv8/YOLO11 – nowsza wersja)
+ultralytics>=8.0.0
