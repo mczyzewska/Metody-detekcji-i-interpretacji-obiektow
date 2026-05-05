@@ -1,0 +1,1 @@
+# Metody-detekcji-i-interpretacji-obiekt-w
