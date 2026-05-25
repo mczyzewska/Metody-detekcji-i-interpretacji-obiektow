@@ -1,108 +1,43 @@
-"""
-Główne okno aplikacji z zakładkami dla każdej funkcjonalności.
-"""
-
+"""Główne okno aplikacji."""
 import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
-from PIL import Image, ImageTk
+from tkinter import ttk
 import os
-
-from gui.tab_basic import (
-    TabLoadSave,
-    TabEdgeDetection,
-    TabThresholding,
-    TabResizeBatch,
-    TabWatermark,
-    TabNeuralNetwork,
-)
-from gui.tab_advanced import (
-    TabSkeletonDetection,
-    TabTrafficSignDetection,
-    TabFacialExpression,
-)
-
+from gui.tab_basic import TabLoadSave, TabEdgeDetection, TabThresholding, TabBatchResize, TabWatermark, TabNeuralNetwork
+from gui.tab_advanced import TabSkeletonDetection, TabTrafficSignDetection, TabFacialExpression
 
 class MainWindow:
-    def __init__(self, root: tk.Tk):
-        self.root = root
-        self.current_image = None        # PIL Image
-        self.current_image_path = None   # str path
-        self.tk_image = None             # PhotoImage for display
+    def __init__(self, root):
+        self.root=root; self.current_image=None; self.current_image_path=None
+        self._build()
 
-        self._build_ui()
+    def _build(self):
+        top=tk.Frame(self.root,bg="#2c3e50",height=52); top.pack(fill=tk.X); top.pack_propagate(False)
+        tk.Label(top,text="🖼  Aplikacja do Przetwarzania Obrazów",bg="#2c3e50",fg="white",
+                 font=("Helvetica",13,"bold")).pack(side=tk.LEFT,padx=15,pady=14)
+        tk.Label(top,text="M. Czyżewska 21227  |  A. Witów 21319  |  MDiIO 2025/2026",
+                 bg="#2c3e50",fg="#bdc3c7",font=("Helvetica",9)).pack(side=tk.RIGHT,padx=15,pady=14)
 
-    # ------------------------------------------------------------------
-    def _build_ui(self):
-        # ── top bar ──────────────────────────────────────────────────
-        top = tk.Frame(self.root, bg="#2c3e50", height=50)
-        top.pack(fill=tk.X)
-        tk.Label(
-            top,
-            text="🖼  Aplikacja do Przetwarzania Obrazów",
-            bg="#2c3e50",
-            fg="white",
-            font=("Helvetica", 14, "bold"),
-            pady=10,
-        ).pack(side=tk.LEFT, padx=15)
+        nb=ttk.Notebook(self.root); nb.pack(fill=tk.BOTH,expand=True,padx=6,pady=6)
+        shared={"root":self.root,"get_image":lambda:self.current_image,
+                "get_path":lambda:self.current_image_path,"set_image":self._set_image}
 
-        # authors label
-        tk.Label(
-            top,
-            text="M. Czyżewska 21227 | A. Witów 21319",
-            bg="#2c3e50",
-            fg="#bdc3c7",
-            font=("Helvetica", 9),
-            pady=10,
-        ).pack(side=tk.RIGHT, padx=15)
+        tabs=[("📂 Wczytaj/Zapis",TabLoadSave),("🔍 Krawędzie",TabEdgeDetection),
+              ("⬛ Progowanie",TabThresholding),("📐 Zmiana rozdzielczości",TabBatchResize),
+              ("💧 Znak wodny",TabWatermark),("🧠 Sieć neuronowa",TabNeuralNetwork),
+              ("🦴 Szkielet człowieka",TabSkeletonDetection),
+              ("🚦 Znaki drogowe",TabTrafficSignDetection),
+              ("😊 Mimika twarzy",TabFacialExpression)]
 
-        # ── notebook ─────────────────────────────────────────────────
-        notebook = ttk.Notebook(self.root)
-        notebook.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+        for title,Cls in tabs:
+            f=ttk.Frame(nb); nb.add(f,text=title); Cls(f,shared)
 
-        # shared state passed to every tab
-        shared = {
-            "root": self.root,
-            "get_image": lambda: self.current_image,
-            "get_path": lambda: self.current_image_path,
-            "set_image": self._set_image,
-        }
+        self.sv=tk.StringVar(value="Gotowy")
+        tk.Label(self.root,textvariable=self.sv,bd=1,relief=tk.SUNKEN,anchor=tk.W,
+                 bg="#ecf0f1",fg="#2c3e50",font=("Helvetica",9)).pack(side=tk.BOTTOM,fill=tk.X)
 
-        tabs = [
-            ("📂 Wczytaj/Zapis",      TabLoadSave),
-            ("🔍 Krawędzie",          TabEdgeDetection),
-            ("⬛ Progowanie",         TabThresholding),
-            ("📐 Zmiana rozdzielczości", TabResizeBatch),
-            ("💧 Znak wodny",         TabWatermark),
-            ("🧠 Sieć neuronowa",     TabNeuralNetwork),
-            ("🦴 Szkielet człowieka", TabSkeletonDetection),
-            ("🚦 Znaki drogowe",      TabTrafficSignDetection),
-            ("😊 Mimika twarzy",      TabFacialExpression),
-        ]
-
-        for title, TabClass in tabs:
-            frame = ttk.Frame(notebook)
-            notebook.add(frame, text=title)
-            TabClass(frame, shared)
-
-        # ── status bar ───────────────────────────────────────────────
-        self.status_var = tk.StringVar(value="Gotowy")
-        status = tk.Label(
-            self.root,
-            textvariable=self.status_var,
-            bd=1,
-            relief=tk.SUNKEN,
-            anchor=tk.W,
-            bg="#ecf0f1",
-            fg="#2c3e50",
-        )
-        status.pack(side=tk.BOTTOM, fill=tk.X)
-
-    # ------------------------------------------------------------------
-    def _set_image(self, img, path=None):
-        self.current_image = img
-        if path:
-            self.current_image_path = path
-        self.status_var.set(
-            f"Załadowany obraz: {os.path.basename(path) if path else 'brak nazwy'}"
-            + (f"  |  Rozmiar: {img.size[0]}×{img.size[1]}" if img else "")
-        )
+    def _set_image(self,img,path=None):
+        self.current_image=img
+        if path: self.current_image_path=path
+        name=os.path.basename(path) if path else "bez nazwy"
+        size=f"{img.size[0]}×{img.size[1]} px" if img else ""
+        self.sv.set(f"Załadowany obraz: {name}   |   {size}")

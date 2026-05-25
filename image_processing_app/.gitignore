@@ -1,56 +1,11 @@
-# Python
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-*.egg
-*.egg-info/
-dist/
-build/
-.eggs/
-
-# Wirtualne środowisko
 venv/
-env/
 .venv/
-.env/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
 .DS_Store
-
-# Modele ML (duże pliki – pobierane automatycznie przy pierwszym uruchomieniu)
-models/*.pt
-models/*.pth
-models/*.h5
-models/*.tflite
-models/*.onnx
-*.weights
-
-# Dane testowe i wyniki
-test_images/
-output/
-results/
-
-# Logi
-*.log
-logs/
-
-# Jupyter
-.ipynb_checkpoints/
-*.ipynb
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-
-# Windows
 Thumbs.db
-ehthumbs.db
-Desktop.ini
+*.log
+processing/_models/
+.pytest_cache/
+.idea/
+.vscode/

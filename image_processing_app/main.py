@@ -1,13 +1,9 @@
 """
-Aplikacja do przetwarzania obrazów
+Aplikacja do Przetwarzania Obrazów
 Autorzy: Magdalena Czyżewska 21227, Adrian Witów 21319
-Metody Detekcji i Interpretacji obiektów 2025/2026
+Metody Detekcji i Interpretacji Obiektów 2025/2026
 """
-
-import sys
-import os
-
-# Ensure the app directory is in the path
+import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import tkinter as tk
@@ -17,19 +13,17 @@ from gui.main_window import MainWindow
 
 def main():
     root = tk.Tk()
-    root.title("Aplikacja do Przetwarzania Obrazów")
+    root.title("Aplikacja do Przetwarzania Obrazów – MDiIO 2025/2026")
     root.geometry("1200x800")
     root.minsize(900, 600)
 
-    # Apply a modern theme
     style = ttk.Style(root)
-    available_themes = style.theme_names()
-    if "clam" in available_themes:
-        style.theme_use("clam")
-    elif "aqua" in available_themes:
-        style.theme_use("aqua")
+    for theme in ("clam", "aqua", "default"):
+        if theme in style.theme_names():
+            style.theme_use(theme)
+            break
 
-    app = MainWindow(root)
+    MainWindow(root)
     root.mainloop()
 
 

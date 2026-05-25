@@ -1,32 +1,34 @@
 # ============================================================
-# Aplikacja do Przetwarzania Obrazów
+# Aplikacja do Przetwarzania Obrazów – pełna wersja (9 zakładek)
 # Autorzy: Magdalena Czyżewska 21227, Adrian Witów 21319
 # ============================================================
 
-# ── Podstawowe (wymagane) ──────────────────────────────────
+# ── WYMAGANE ──────────────────────────────────────────────
 Pillow>=10.0.0
 opencv-python>=4.8.0
 numpy>=1.24.0
 
-# ── Głębkie uczenie (mocno zalecane) ──────────────────────
-# Wybierz odpowiednią wersję dla swojej platformy:
-# macOS (Apple Silicon M1/M2/M3):
+# ── PyTorch (zakładka F + opcjonalnie znaki drogowe) ──────
+# macOS Apple Silicon:
 #   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-# macOS (Intel):
+# macOS Intel / Linux CPU:
 #   pip install torch torchvision
-# Linux/Windows (GPU CUDA):
+# Windows GPU CUDA 12.1:
 #   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
 torch>=2.0.0
 torchvision>=0.15.0
 
-# ── Detekcja szkieletu ─────────────────────────────────────
+# ── MediaPipe 0.10+ (zakładka Szkielet + Mimika) ─────────
+# WAŻNE: wersja 0.10+ używa nowego Tasks API (nie mp.solutions)
+# Model (~30 MB) pobierany automatycznie przy pierwszym użyciu
 mediapipe>=0.10.0
 
-# ── Detekcja emocji ───────────────────────────────────────
+# ── DeepFace (zakładka Mimika twarzy) ─────────────────────
 deepface>=0.0.79
-tf-keras>=2.15.0   # wymagane przez DeepFace (TF backend)
+tf-keras>=2.15.0
 
-# ── Opcjonalne ────────────────────────────────────────────
-# YOLOv5 (zainstaluj osobno z torch hub lub oficjalnie):
-# pip install ultralytics  (YOLOv8/YOLO11 – nowsza wersja)
+# ── YOLOv8 (zakładka Sieć neuronowa – detekcja) ──────────
 ultralytics>=8.0.0
+
+# ── Testy ─────────────────────────────────────────────────
+pytest>=7.0.0
