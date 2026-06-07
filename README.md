@@ -4,17 +4,18 @@
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.8%2B-green?logo=opencv&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-yellow)
-![Tests](https://img.shields.io/badge/Tests-33%20passed-brightgreen)
-![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c?logo=pytorch&logoColor=white)
+![MediaPipe](https://img.shields.io/badge/MediaPipe-0.10%2B-blue)
+![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows-lightgrey)
+![Tests](https://img.shields.io/badge/Testy-31%20passed-brightgreen)
 
-**Projekt 1 · Metody Detekcji i Interpretacji Obiektów 2025/2026**  
+**Metody Detekcji i Interpretacji Obiektów 2025/2026**
 Akademia Nauk Stosowanych w Elblągu
 
 | Autor | Nr indeksu |
 |-------|-----------|
+| Witów Adrian | 21319 |
 | Magdalena Czyżewska | 21227 |
-| Adrian Witów | 21319 |
 
 </div>
 
@@ -24,87 +25,94 @@ Akademia Nauk Stosowanych w Elblągu
 
 - [Opis projektu](#-opis-projektu)
 - [Funkcjonalności](#-funkcjonalności)
-- [Wymagania systemowe](#-wymagania-systemowe)
-- [Instalacja na macOS](#-instalacja-na-macos)
-- [Instalacja na Windows](#-instalacja-na-windows)
+- [Technologie i modele](#-technologie-i-modele)
+- [Instalacja – macOS](#-instalacja--macos)
+- [Instalacja – Windows](#-instalacja--windows)
 - [Uruchomienie w VS Code](#-uruchomienie-w-vs-code)
-- [Uruchomienie testów](#-uruchomienie-testów)
+- [Szczegóły zakładek](#-szczegóły-zakładek)
+- [Testy jednostkowe](#-testy-jednostkowe)
 - [Struktura projektu](#-struktura-projektu)
-- [Opis algorytmów](#-opis-algorytmów)
 - [Rozwiązywanie problemów](#-rozwiązywanie-problemów)
-- [Harmonogram](#-harmonogram)
 
 ---
 
 ## 📌 Opis projektu
 
-Desktopowa aplikacja GUI napisana w Pythonie (Tkinter) do kompleksowego przetwarzania i analizy obrazów. Łączy klasyczne algorytmy wizji komputerowej (OpenCV) z nowoczesnymi modelami głębokiego uczenia (PyTorch, MediaPipe, DeepFace).
+Desktopowa aplikacja GUI napisana w Pythonie z ciemnym motywem graficznym (Tkinter). Łączy klasyczne algorytmy wizji komputerowej z nowoczesnymi modelami głębokiego uczenia. Zawiera **9 zakładek** pokrywających pełen zakres wymagań projektowych – od podstawowego wczytywania obrazów po detekcję szkieletu człowieka i analizę emocji twarzy.
 
-Każda funkcja AI posiada **fallback oparty na OpenCV** – aplikacja działa poprawnie nawet bez zainstalowanych bibliotek ML.
+Każda funkcja AI posiada **fallback oparty na OpenCV** – aplikacja działa w pełni bez zainstalowanych bibliotek ML.
 
 ---
 
 ## ✅ Funkcjonalności
 
-### Funkcjonalności podstawowe
+### Zakładki podstawowe (Milestone 1)
 
-| # | Zakładka | Opis |
-|---|----------|------|
-| A | 📂 Wczytaj/Zapis | Wczytywanie i zapis obrazów – PNG, JPG, BMP, TIFF, WebP |
-| B | 🔍 Krawędzie | Wykrywanie krawędzi: **Canny**, **Sobel**, **Laplacian** |
-| C | ⬛ Progowanie | Progowanie: **Otsu**, **Adaptacyjne Mean**, **Adaptacyjne Gaussian** |
-| D | 📐 Rozdzielczość | Wsadowa zmiana rozdzielczości wszystkich obrazów w folderze |
-| E | 💧 Znak wodny | Wsadowe dodawanie znaku wodnego (tekst, pozycja, kolor, przezroczystość) |
-| F | 🧠 Sieć neuronowa | MobileNetV2 (klasyfikacja) · DeepLab v3 (segmentacja) · YOLOv5 (detekcja) |
+| Zakładka | Symbol | Opis |
+|----------|--------|------|
+| 📂 Wczytaj / Zapis | A | Wczytywanie i zapis obrazów – PNG, JPG, BMP, TIFF, WebP |
+| 🔍 Krawędzie | B | Wykrywanie krawędzi: **Canny**, **Sobel**, **Laplacian** |
+| ⬛ Progowanie | C | Progowanie: **Otsu**, **Adaptacyjne Mean**, **Adaptacyjne Gaussian** |
+| 📐 Rozdzielczość | D | Wsadowa zmiana rozdzielczości wszystkich obrazów w folderze |
+| 💧 Znak wodny | E | Wsadowe dodawanie tekstowego znaku wodnego do folderu obrazów |
+| 🧠 Sieć neuronowa | F | Klasyfikacja (MobileNetV2) · Segmentacja (DeepLab v3) · Detekcja (YOLOv5) |
 
-### Funkcjonalności dodatkowe
+### Zakładki zaawansowane
 
-| # | Zakładka | Opis |
-|---|----------|------|
-| III-A | 🦴 Szkielet | Wykrywanie szkieletu człowieka i klasyfikacja póz (MediaPipe Pose, 33 punkty) |
-| III-B | 🚦 Znaki drogowe | Wykrywanie i klasyfikacja znaków drogowych – 43 klasy GTSRB |
-| III-C | 😊 Mimika twarzy | Detekcja twarzy i klasyfikacja 7 emocji (DeepFace / MediaPipe Face Mesh) |
-
----
-
-## 💻 Wymagania systemowe
-
-| | Minimum | Zalecane |
-|--|---------|---------|
-| **Python** | 3.10 | 3.11 / 3.12 |
-| **RAM** | 4 GB | 8 GB |
-| **Dysk** | 2 GB | 5 GB (modele ML) |
-| **macOS** | 12 Monterey | 13 Ventura+ |
-| **Windows** | 10 64-bit | 11 |
+| Zakładka | Symbol | Opis |
+|----------|--------|------|
+| 🦴 Szkielet człowieka | III-A | Detekcja 33 punktów kluczowych ciała + klasyfikacja pozy (MediaPipe) |
+| 🌸 Filtr różowy | III-B | 5 trybów filtra różowego z regulowaną intensywnością i winiетowaniem |
+| 😊 Mimika twarzy | III-C | Detekcja twarzy + klasyfikacja 7 emocji (DeepFace / MediaPipe) |
 
 ---
 
-## 🍎 Instalacja na macOS
+## 🛠️ Technologie i modele
 
-### Krok 1 – Zainstaluj Python 3.10+
+### Biblioteki
 
-Sprawdź aktualną wersję:
+| Biblioteka | Wersja | Zastosowanie |
+|------------|--------|-------------|
+| `Pillow` | ≥ 10.0 | Wczytywanie, zapis, manipulacja obrazami, znak wodny |
+| `opencv-python` | ≥ 4.8 | Algorytmy krawędzi, progowania, Haar Cascades (fallback) |
+| `numpy` | ≥ 1.24 | Operacje macierzowe, filtry różowego |
+| `tkinter` | wbudowany | Interfejs graficzny GUI – ciemny motyw |
+| `torch` + `torchvision` | ≥ 2.0 | Modele głębokiego uczenia |
+| `mediapipe` | ≥ 0.10 | Detekcja szkieletu i siatki twarzy (Tasks API) |
+| `deepface` + `tf-keras` | ≥ 0.0.79 | Analiza emocji twarzy (FER2013) |
+| `ultralytics` | ≥ 8.0 | Detekcja obiektów YOLOv5/v8 |
+
+### Modele AI
+
+| Model | Zadanie | Zbiór danych | Rozmiar |
+|-------|---------|-------------|---------|
+| **MobileNetV2** | Klasyfikacja obrazu | ImageNet (1000 klas) | ~14 MB |
+| **DeepLab v3 ResNet-50** | Segmentacja semantyczna | PASCAL VOC (21 klas) | ~160 MB |
+| **YOLOv5s** | Detekcja obiektów | COCO (80 klas) | ~28 MB |
+| **MediaPipe PoseLandmarker Full** | Detekcja szkieletu | Własny Google | ~29 MB |
+| **MediaPipe FaceLandmarker** | Siatka twarzy (468 pkt.) | Własny Google | ~6 MB |
+| **DeepFace FER2013** | Klasyfikacja emocji | FER2013 (7 emocji) | ~54 MB |
+
+> Modele MediaPipe pobierane są automatycznie przy pierwszym użyciu z Google Storage.
+
+---
+
+## 🍎 Instalacja – macOS
+
+### Krok 1 – Python 3.10+
+
 ```bash
-python3 --version
+python3 --version   # sprawdź wersję
 ```
 
-Jeśli brak lub wersja starsza niż 3.10, zainstaluj przez [Homebrew](https://brew.sh):
+Jeśli brak lub < 3.10:
 ```bash
-# Instalacja Homebrew (jeśli nie masz)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Instalacja Pythona 3.12
 brew install python@3.12
-
-# Instalacja tkinter (wymagane dla GUI)
-brew install python-tk@3.12
+brew install python-tk@3.12   # wymagane dla GUI
 ```
 
-> **Apple Silicon (M1/M2/M3)?** Upewnij się że używasz natywnego ARM Pythona:
-> ```bash
-> python3 -c "import platform; print(platform.machine())"
-> # Powinno wyświetlić: arm64
-> ```
+> **Apple Silicon (M1/M2/M3):** sprawdź `python3 -c "import platform; print(platform.machine())"` → powinno wyświetlić `arm64`
 
 ### Krok 2 – Pobierz projekt
 
@@ -113,28 +121,21 @@ git clone https://github.com/TWOJE_KONTO/image-processing-app.git
 cd image-processing-app
 ```
 
-Lub pobierz ZIP z GitHub → `Code → Download ZIP`, rozpakuj, następnie:
-```bash
-cd image_processing_app
-```
-
-### Krok 3 – Utwórz wirtualne środowisko
+### Krok 3 – Wirtualne środowisko
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-Po aktywacji terminal pokazuje `(venv)` na początku linii.
-
-### Krok 4 – Zainstaluj zależności podstawowe
+### Krok 4 – Zależności podstawowe
 
 ```bash
 pip install --upgrade pip
 pip install Pillow opencv-python numpy
 ```
 
-### Krok 5 – Zainstaluj PyTorch
+### Krok 5 – PyTorch
 
 **Apple Silicon (M1/M2/M3):**
 ```bash
@@ -146,20 +147,15 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 pip install torch torchvision
 ```
 
-### Krok 6 – Zainstaluj biblioteki AI (opcjonalne, zalecane)
+### Krok 6 – Biblioteki AI (opcjonalne)
 
 ```bash
-# Detekcja szkieletu – zakładka III-A
 pip install mediapipe
-
-# Detekcja emocji – zakładka III-C
 pip install deepface tf-keras
-
-# Detekcja obiektów YOLO – zakładka F
 pip install ultralytics
 ```
 
-### Krok 7 – Uruchom aplikację
+### Krok 7 – Uruchom
 
 ```bash
 python main.py
@@ -167,19 +163,16 @@ python main.py
 
 ---
 
-## 🪟 Instalacja na Windows
+## 🪟 Instalacja – Windows
 
-### Krok 1 – Zainstaluj Python 3.10+
+### Krok 1 – Python 3.10+
 
-1. Wejdź na **[python.org/downloads](https://www.python.org/downloads/)**
-2. Pobierz **Python 3.12.x** – Windows installer (64-bit)
-3. Uruchom instalator i **koniecznie zaznacz** `☑ Add Python to PATH`
-4. Kliknij **Install Now**
+1. Pobierz z [python.org/downloads](https://www.python.org/downloads/) → Python 3.12
+2. Zaznacz `☑ Add Python to PATH`
+3. Kliknij **Install Now**
 
-Zweryfikuj instalację – otwórz **PowerShell**:
 ```powershell
-python --version
-pip --version
+python --version   # weryfikacja
 ```
 
 ### Krok 2 – Pobierz projekt
@@ -189,61 +182,43 @@ git clone https://github.com/TWOJE_KONTO/image-processing-app.git
 cd image-processing-app
 ```
 
-Lub pobierz ZIP ręcznie, rozpakuj i otwórz folder:
-```powershell
-cd image_processing_app
-```
-
-### Krok 3 – Utwórz wirtualne środowisko
+### Krok 3 – Wirtualne środowisko
 
 ```powershell
 python -m venv venv
 venv\Scripts\activate
 ```
 
-> **Błąd „execution of scripts is disabled"?** Uruchom PowerShell jako Administrator i wykonaj:
-> ```powershell
-> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-> ```
-> Następnie wróć do normalnego okna i aktywuj ponownie.
+> Błąd `scripts is disabled`? Uruchom: `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
-Po aktywacji terminal pokazuje `(venv)` na początku linii.
-
-### Krok 4 – Zainstaluj zależności podstawowe
+### Krok 4 – Zależności podstawowe
 
 ```powershell
 pip install --upgrade pip
 pip install Pillow opencv-python numpy
 ```
 
-### Krok 5 – Zainstaluj PyTorch
+### Krok 5 – PyTorch
 
-**Windows bez karty NVIDIA (CPU):**
+**CPU (bez karty NVIDIA):**
 ```powershell
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 ```
 
-**Windows z kartą NVIDIA (CUDA 12.1):**
+**GPU (CUDA 12.1):**
 ```powershell
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
 ```
 
-> Nie wiesz czy masz CUDA? Sprawdź komendą `nvidia-smi` w terminalu. Jeśli nie istnieje – użyj wersji CPU.
-
-### Krok 6 – Zainstaluj biblioteki AI (opcjonalne, zalecane)
+### Krok 6 – Biblioteki AI (opcjonalne)
 
 ```powershell
-# Detekcja szkieletu – zakładka III-A
 pip install mediapipe
-
-# Detekcja emocji – zakładka III-C
 pip install deepface tf-keras
-
-# Detekcja obiektów YOLO – zakładka F
 pip install ultralytics
 ```
 
-### Krok 7 – Uruchom aplikację
+### Krok 7 – Uruchom
 
 ```powershell
 python main.py
@@ -251,94 +226,186 @@ python main.py
 
 ---
 
-## 💡 Szybka instalacja – wszystko jednym poleceniem
-
-**macOS (Apple Silicon):**
-```bash
-source venv/bin/activate && \
-pip install Pillow opencv-python numpy mediapipe deepface tf-keras ultralytics && \
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-```
-
-**Windows / macOS Intel / Linux (CPU):**
-```bash
-pip install Pillow opencv-python numpy mediapipe deepface tf-keras ultralytics torch torchvision
-```
-
----
-
 ## 🖥️ Uruchomienie w VS Code
 
-Kroki identyczne na macOS i Windows.
-
-### 1. Otwórz folder projektu
-
-```
-File → Open Folder → wybierz folder image_processing_app
-```
-
-### 2. Zainstaluj rozszerzenie Python (jeśli brak)
-
-- Skrót: `Ctrl+Shift+X` (Windows) / `Cmd+Shift+X` (macOS)
-- Wyszukaj: `Python` (wydawca: Microsoft) → **Install**
-
-### 3. Wybierz interpreter Pythona
-
-- Skrót: `Ctrl+Shift+P` / `Cmd+Shift+P`
-- Wpisz: `Python: Select Interpreter`
-- Wybierz:
-  - macOS: `./venv/bin/python`
-  - Windows: `.\venv\Scripts\python.exe`
-
-### 4. Uruchom aplikację
-
-**Opcja A – klawisz F5:**
-- Naciśnij `F5`
-- Wybierz konfigurację **„Uruchom aplikację"**
-
-**Opcja B – terminal wbudowany w VS Code:**
-
-macOS:
-```bash
-source venv/bin/activate && python main.py
-```
-Windows:
-```powershell
-venv\Scripts\activate && python main.py
-```
-
-**Opcja C – przycisk ▷:**
-- Otwórz plik `main.py`
-- Kliknij przycisk **▷ Run Python File** w prawym górnym rogu
+1. `File → Open Folder` → wybierz folder `image_processing_app`
+2. `Ctrl/Cmd+Shift+P` → `Python: Select Interpreter` → wybierz `venv`
+3. Naciśnij **F5** → konfiguracja `Uruchom aplikację`
 
 ---
 
-## 🧪 Uruchomienie testów
+## 🔬 Szczegóły zakładek
+
+### A) Wczytywanie i Zapis
+
+- Obsługiwane formaty wejściowe: **PNG, JPG/JPEG, BMP, TIFF, GIF, WebP**
+- Podgląd wczytanego obrazu z informacją o rozmiarze i trybie
+- Zapis do wybranego formatu z oknem dialogowym
+- Aktywny obraz przekazywany do wszystkich zakładek B, C, F, III-A, III-B, III-C
+
+---
+
+### B) Wykrywanie Krawędzi
+
+#### Canny (John Canny, 1986)
+Wieloetapowy algorytm – uznawany za standard w detekcji krawędzi:
+1. **Rozmycie Gaussowskie** (jądro 5×5) – redukcja szumu
+2. **Gradient intensywności** – operator Sobela w osiach X i Y
+3. **Non-Maximum Suppression** – ścieńczenie krawędzi do 1 piksela
+4. **Podwójne progowanie** – klasyfikacja: pewne / kandydaci / tło
+5. **Hystereza** – śledzenie połączeń od krawędzi pewnych
+
+Parametry: `próg dolny` (0–500), `próg górny` (0–500)
+
+#### Sobel
+Oblicza gradient obrazu przy użyciu jąder konwolucji 3×3:
+```
+Gx = [[-1, 0, +1], [-2, 0, +2], [-1, 0, +1]]
+Gy = [[-1,-2,-1],  [ 0, 0,  0], [+1,+2,+1]]
+Amplituda = sqrt(Gx² + Gy²)  → normalizacja 0–255
+```
+
+#### Laplacian
+Oblicza drugą pochodną obrazu. Poprzedzony rozmyciem Gaussowskim (3×3). Zwraca wartości bezwzględne, normalizowane do 0–255.
+
+---
+
+### C) Progowanie
+
+#### Globalne – Otsu
+Automatycznie minimalizuje wariancję wewnątrzklasową. Poprzedzony rozmyciem Gaussowskim.
+
+#### Adaptacyjne – Mean
+```
+T(x,y) = mean(sąsiedztwo block_size×block_size) − C
+```
+
+#### Adaptacyjne – Gaussian
+```
+T(x,y) = Σ[w_gauss(i,j) · I(x+i, y+j)] − C
+```
+Gładsze wyniki niż Mean dzięki ważeniu Gaussowskiemu.
+
+---
+
+### D) Zmiana Rozdzielczości (Wsadowo)
+
+- Przetwarza wszystkie obrazy (`jpg`, `png`, `bmp`, `tiff`, `webp`) w wybranym folderze
+- Opcja zachowania proporcji (`thumbnail`) lub skalowania do dokładnych wymiarów (`resize`)
+- Metody interpolacji: **LANCZOS** (najlepsza jakość), **BICUBIC**, **BILINEAR**, **NEAREST**
+- Pasek postępu + log operacji w czasie rzeczywistym
+
+---
+
+### E) Znak Wodny (Wsadowo)
+
+- Nakłada tekstowy znak wodny na wszystkie obrazy w folderze
+- Parametry: treść tekstu, pozycja (5 opcji: środek / 4 rogi), przezroczystość (0–255), rozmiar czcionki, kolor (#RRGGBB)
+- Subtelny cień tekstu (2 px offset) dla czytelności na jasnych i ciemnych tłach
+- Implementacja: osobna warstwa `RGBA` + `alpha_composite`
+
+---
+
+### F) Sieć Neuronowa
+
+#### Klasyfikacja – MobileNetV2
+- Architektura: Inverted Residual Blocks + Linear Bottlenecks + Depthwise Separable Convolutions
+- Wejście: tensor `224×224×3`, normalizowany (μ=`[0.485, 0.456, 0.406]`, σ=`[0.229, 0.224, 0.225]`)
+- Wyjście: Top-5 predykcji z prawdopodobieństwami (softmax, 1000 klas ImageNet)
+- **Fallback:** analiza statystyczna kanałów R/G/B (jasność, dominujący kolor)
+
+#### Segmentacja – DeepLab v3 (ResNet-50)
+- Architektura: Atrous Convolutions + ASPP (Atrous Spatial Pyramid Pooling)
+- Zbiór: PASCAL VOC – 21 klas (tło, osoba, samochód, pies, kot, rower itp.)
+- Wyjście: mapa klas nałożona na oryginał (blend 50/50) z kolorową paletą klas
+- **Fallback:** segmentacja K-Means (5 klastrów kolorów, OpenCV)
+
+#### Detekcja obiektów – YOLOv5s
+- Architektura: jednoetapowy detektor CNN, siatka predykcji ramek (anchor-based)
+- Wariant: `yolov5s` – small (~7.2 M parametrów), szybki na CPU
+- Zbiór: COCO – 80 klas (pojazdy, zwierzęta, meble, elektronika itp.)
+- Wyjście: ramki otaczające z etykietami i procentem pewności
+- **Fallback:** OpenCV Haar Cascades (twarze frontalne + sylwetki pełnego ciała)
+
+---
+
+### III-A) Szkielet Człowieka
+
+**Model:** MediaPipe PoseLandmarker Full (Tasks API ≥ 0.10)
+- 33 punkty kluczowe ciała z współrzędnymi (x, y, z) i widocznością
+- 16 połączeń szkieletu (kończyny górne, dolne, tułów)
+- Model pobierany automatycznie przy pierwszym użyciu (~29 MB)
+
+**Klasyfikacja pozy** (kąty stawów biodro–kolano–kostka):
+
+| Poza | Kryterium |
+|------|-----------|
+| Stojący | kąt kolana > 160° |
+| Siedzący | kąt kolana 80–120° |
+| Kucający | kąt kolana 120–145° |
+| Leżący | mała różnica Y bark–biodro (< 0.15) |
+| W ruchu | pozostałe przypadki |
+
+**Fallback:** OpenCV Haar Cascades (pełna sylwetka + górna część ciała)
+
+---
+
+### III-B) Filtr Różowy 🌸
+
+Konwertuje obraz na odcienie różowego w 5 trybach:
+
+| Tryb | Opis | Technika |
+|------|------|----------|
+| **Klasyczny różowy** | Ciepły, naturalny róż | Boosted R channel + obniżone G/B |
+| **Ciepły róż** | Kremowo-różowy | R +80, G/B tłumione |
+| **Neonowy różowy** | Intensywny `#ff006e` | Desaturacja + overlay neonowy |
+| **Pastelowy różowy** | Jasny, stonowany | Rozjaśnienie + blend `light pink (255,182,193)` |
+| **Malinowy** | Głęboki ciemny róż | R nasycony, G/B mocno tłumione |
+
+Dodatkowe opcje: **intensywność** (0.05–1.0, suwak), **rozmycie Gaussowskie** (radius 1.5), **winietowanie** (ciemne krawędzie wzmacniające efekt).
+
+---
+
+### III-C) Mimika Twarzy
+
+**Backend 1 – DeepFace (FER2013)**
+- Model wytrenowany na zbiorze FER2013 (~35 000 zdjęć twarzy)
+- Klasyfikuje 7 emocji: **szczęście, smutek, złość, zaskoczenie, strach, wstręt, neutralność**
+- Zwraca rozkład procentowy wszystkich emocji dla każdej twarzy
+
+**Backend 2 – MediaPipe FaceLandmarker (Tasks API ≥ 0.10)**
+- 468 punktów kluczowych twarzy + 52 współczynniki blendshapes
+- Emocje wyznaczane geometrycznie z blendshapes:
+  - `mouthSmileLeft/Right` → szczęście
+  - `mouthFrownLeft/Right` → smutek
+  - `browDownLeft/Right` → złość
+  - `jawOpen + eyeWide` → zaskoczenie / strach
+  - `noseSneerLeft` → wstręt
+- Model pobierany automatycznie (~6 MB)
+
+**Fallback:** OpenCV Haar Cascades (detekcja twarzy) + `haarcascade_smile.xml` (uśmiech)
+
+---
+
+## 🧪 Testy jednostkowe
 
 ```bash
-# Aktywuj środowisko jeśli nieaktywne
-source venv/bin/activate   # macOS / Linux
-venv\Scripts\activate      # Windows
+source venv/bin/activate    # macOS
+venv\Scripts\activate       # Windows
 
-# Zainstaluj pytest
 pip install pytest
-
-# Uruchom wszystkie testy
 python -m pytest tests/ -v
 ```
 
-Oczekiwany wynik:
-```
-collected 33 items
-...
-33 passed in ~1.0s
-```
-
-Opcjonalnie – raport pokrycia kodu:
-```bash
-pip install pytest-cov
-python -m pytest tests/ -v --cov=processing --cov-report=term-missing
-```
+Pokrycie testów: **31 testów** obejmujących:
+- Detekcja krawędzi (Canny, Sobel, Laplacian)
+- Progowanie (Otsu, Mean, Gaussian)
+- Wsadowa zmiana rozdzielczości (proporcje, dokładny rozmiar, pasek postępu)
+- Znak wodny (wszystkie pozycje, zmiana pikseli, batch)
+- Filtr różowy (wszystkie 5 trybów, NMS, klasyfikacja kształtu)
+- Szkielet człowieka (fallback OpenCV)
+- Mimika twarzy (fallback, blendshapes=None)
+- Sieci neuronowe (wszystkie 3 fallbacki)
 
 ---
 
@@ -347,91 +414,34 @@ python -m pytest tests/ -v --cov=processing --cov-report=term-missing
 ```
 image_processing_app/
 │
-├── main.py                        ← punkt wejścia – uruchom ten plik
+├── main.py                        ← uruchom ten plik
 │
-├── gui/                           ← interfejs graficzny (Tkinter)
-│   ├── main_window.py             ← główne okno, pasek stanu, 9 zakładek
-│   ├── tab_basic.py               ← zakładki A, B, C, D, E, F
+├── gui/
+│   ├── main_window.py             ← okno, ciemny motyw ttk, 9 zakładek
+│   ├── tab_basic.py               ← zakładki A–F
 │   ├── tab_advanced.py            ← zakładki III-A, III-B, III-C
-│   └── image_preview.py           ← widget podglądu obraz przed/po
+│   └── image_preview.py           ← DualPreview (500×380), ciemne kanwasy
 │
-├── processing/                    ← cała logika przetwarzania obrazów
+├── processing/
 │   ├── edge_detection.py          ← Canny · Sobel · Laplacian
 │   ├── thresholding.py            ← Otsu · Adaptive Mean · Gaussian
 │   ├── batch_resize.py            ← wsadowa zmiana rozdzielczości
-│   ├── watermark.py               ← wsadowy znak wodny
+│   ├── watermark.py               ← wsadowy znak wodny (RGBA layer)
 │   ├── neural_network.py          ← MobileNetV2 · DeepLab v3 · YOLOv5
-│   ├── skeleton_detection.py      ← MediaPipe Pose · klasyfikacja póz
-│   ├── traffic_signs.py           ← CNN + detekcja GTSRB 43 klasy
-│   └── facial_expression.py       ← DeepFace · MediaPipe Face Mesh
+│   ├── skeleton_detection.py      ← MediaPipe PoseLandmarker (Tasks API)
+│   ├── traffic_signs.py           ← 5 trybów filtra różowego + winietowanie
+│   └── facial_expression.py       ← DeepFace + MediaPipe FaceLandmarker
 │
 ├── tests/
-│   └── test_processing.py         ← 33 testy jednostkowe (pytest)
+│   └── test_all.py                ← 31 testów jednostkowych (pytest)
 │
 ├── .vscode/
-│   ├── launch.json                ← konfiguracja F5 w VS Code
-│   └── settings.json              ← ustawienia edytora i linter
+│   ├── launch.json
+│   └── settings.json
 │
-├── requirements.txt               ← lista zależności
-├── setup.py                       ← instalacja jako pakiet (opcjonalne)
-├── .gitignore
+├── requirements.txt
 └── README.md
 ```
-
----
-
-## 🔬 Opis algorytmów
-
-### B) Wykrywanie krawędzi
-
-#### Canny
-Wieloetapowy algorytm (1986): rozmycie Gaussowskie → gradient (Sobel) → Non-Maximum Suppression → podwójne progowanie → śledzenie przez histerezę. Parametry: `próg dolny` (domyślnie 50), `próg górny` (domyślnie 150).
-
-#### Sobel
-Oblicza gradient obrazu w kierunkach X i Y jądrami konwolucji 3×3. Amplituda = `sqrt(Gx² + Gy²)`. Wykrywa krawędzie z informacją o kierunku.
-
-#### Laplacian
-Oblicza drugą pochodną obrazu. Wykrywa obszary gwałtownych zmian intensywności. Poprzedzony rozmyciem Gaussowskim. Zwraca wartości bezwzględne, normalizowane do 0–255.
-
----
-
-### C) Progowanie
-
-#### Globalne – Otsu
-Automatycznie wyznacza optymalny próg przez minimalizację wariancji wewnątrzklasowej. Najlepszy dla obrazów z bimodalnym histogramem. Poprzedzony rozmyciem Gaussowskim.
-
-#### Adaptacyjne – Mean
-Próg = średnia arytmetyczna sąsiedztwa `block_size × block_size` − stała `C`. Działa poprawnie przy nierównomiernym oświetleniu.
-
-#### Adaptacyjne – Gaussian
-Jak Mean, ale sąsiedztwo ważone rozkładem Gaussowskim. Daje wygładsze, mniej szumowe wyniki.
-
----
-
-### III-A) Szkielet – MediaPipe Pose
-
-Wykrywa 33 punkty kluczowe ciała z ich widocznością. Klasyfikacja pozy na podstawie kątów stawów (biodro–kolano–kostka):
-
-| Poza | Kryterium |
-|------|-----------|
-| Stojący | Kąt kolana > 160° |
-| Siedzący | Kąt kolana 80–120° |
-| Kucający | Kąt kolana 120–145° |
-| Leżący | Mała różnica Y bark–biodro |
-
----
-
-### III-B) Znaki drogowe
-
-Detekcja dwuetapowa: segmentacja kandydatów przez analizę kolorów HSV (czerwony / niebieski / żółty) i analizę konturów → klasyfikacja przez CNN (43 klasy GTSRB). Fallback: reguły geometryczne (kształt + kolor).
-
----
-
-### III-C) Mimika twarzy
-
-**DeepFace:** model FER2013, 7 emocji: szczęście, smutek, złość, zaskoczenie, strach, wstręt, neutralność.
-
-**MediaPipe Face Mesh:** 468 punktów kluczowych + geometryczna klasyfikacja: kąt ust → uśmiech/smutek, otwarcie oczu → zaskoczenie/strach, pozycja brwi → złość.
 
 ---
 
@@ -442,56 +452,32 @@ Detekcja dwuetapowa: segmentacja kandydatów przez analizę kolorów HSV (czerwo
 | Problem | Rozwiązanie |
 |---------|-------------|
 | `No module named '_tkinter'` | `brew install python-tk@3.12` |
-| `permission denied` przy pip | `pip install --user PAKIET` |
-| MediaPipe nie działa na M1/M2 | `pip install mediapipe --no-binary mediapipe` |
-| Okno aplikacji się nie otwiera | Sprawdź `echo $DISPLAY` – uruchom z terminala, nie przez Finder |
+| Okno nie otwiera się | Uruchom z terminala, nie przez Finder |
+| MediaPipe – błąd M1/M2 | `pip install mediapipe --no-binary mediapipe` |
+| `module 'mediapipe' has no attribute 'solutions'` | Zaktualizuj: `pip install mediapipe --upgrade` (wymagane ≥ 0.10) |
 
 ### Windows
 
 | Problem | Rozwiązanie |
 |---------|-------------|
-| `python` not found | Przeinstaluj Python z zaznaczonym `Add to PATH` |
+| `python` not found | Przeinstaluj z zaznaczonym `Add to PATH` |
 | `scripts is disabled` | `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` |
 | `Microsoft Visual C++ required` | Zainstaluj [C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) |
-| OpenCV błąd z Qt | `pip install opencv-python-headless` |
 
 ### Ogólne
 
 | Problem | Rozwiązanie |
 |---------|-------------|
-| Pierwsze uruchomienie modelu trwa długo | Pobierane są wagi (~50–500 MB) – potrzebny internet |
-| Brak wyników detekcji | Zmniejsz próg pewności w ustawieniach zakładki |
-| Aplikacja „zamarza" podczas AI | Przetwarzanie w wątku – poczekaj chwilę |
-
----
-
-## 📦 Użyte biblioteki
-
-| Biblioteka | Wersja | Zastosowanie |
-|------------|--------|-------------|
-| `Pillow` | ≥10.0 | Wczytywanie, zapis, manipulacja obrazami |
-| `opencv-python` | ≥4.8 | Klasyczne algorytmy wizji komputerowej |
-| `numpy` | ≥1.24 | Operacje macierzowe na danych obrazu |
-| `tkinter` | wbudowany | Interfejs graficzny |
-| `torch` + `torchvision` | ≥2.0 | MobileNetV2, DeepLab v3 |
-| `mediapipe` | ≥0.10 | Detekcja szkieletu, siatka twarzy |
-| `deepface` | ≥0.0.79 | Analiza emocji twarzy |
-| `ultralytics` | ≥8.0 | Detekcja obiektów YOLOv8 |
-
----
-
-## 📅 Harmonogram
-
-| Data | Etap |
-|------|------|
-| **18.05.2026** | Milestone 1 – Funkcjonalności podstawowe (A–F) |
-| **01.06 – 08.06.2026** | Prezentacja projektu |
+| Pierwsze uruchomienie AI trwa długo | Pobierane wagi (~6–160 MB) – wymagany internet |
+| Suwak pewności skacze co 1 | Używaj wersji v4+ (naprawiono `resolution=0.05`) |
+| DeepFace błąd TF | `pip install tf-keras` |
 
 ---
 
 <div align="center">
 
-*Projekt zrealizowany w ramach kursu Metody Detekcji i Interpretacji Obiektów*  
-*Akademia Nauk Stosowanych w Elblągu · 2025/2026*
+**Prezentacja projektu: 01.06 – 08.06.2026**
+
+*Metody Detekcji i Interpretacji Obiektów · ANS Elbląg · 2025/2026*
 
 </div>
